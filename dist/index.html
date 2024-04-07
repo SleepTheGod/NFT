@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - NFT Silk Road</title>
+  <link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NFT Silk Road Marketplace</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header class="silk-road-header">
+        <h1>NFT Silk Road Marketplace</h1>
+    </header>
+
+    <main class="silk-road-main">
+        <section id="explore" class="silk-road-section">
+            <h2>Explore NFT Collection</h2>
+            <div class="nft-grid" id="nftGrid">
+                <!-- NFT Cards will be dynamically added here -->
+                <div class="nft-card" data-id="1">
+                    <img src="https://img-cdn.magiceden.dev/rs:fill:400:0:0/plain/https://bafybeidb7ltjitqivbcp22iktp5vmciee4dwzrjobwjnlzt5dkgyepj5ne.ipfs.nftstorage.link/" alt="NFT Image">
+                    <h3>NFT Name 1</h3>
+                    <p>Description of the NFT 1</p>
+                    <p class="price">Price: 0.1 BTC</p>
+                    <button class="purchase-btn">Purchase with Bitcoin</button>
+                    <button class="view-details-btn">View Details</button>
+                </div>
+
+                <div class="nft-card" data-id="2">
+                    <img src="https://img-cdn.magiceden.dev/rs:fill:400:0:0/plain/https://bafybeidb7ltjitqivbcp22iktp5vmciee4dwzrjobwjnlzt5dkgyepj5ne.ipfs.nftstorage.link/" alt="NFT Image">
+                    <h3>NFT Name 2</h3>
+                    <p>Description of the NFT 2</p>
+                    <p class="price">Price: 0.05 BTC</p>
+                    <button class="purchase-btn">Purchase with Bitcoin</button>
+                    <button class="view-details-btn">View Details</button>
+                </div>
+                <!-- Add more NFT cards as needed -->
+            </div>
+        </section>
+    </main>
+
+    <div id="detailsModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>NFT Details</h2>
+            <img id="modalImage" src="" alt="NFT Image">
+            <p id="modalDescription">Description of the NFT</p>
+            <p id="modalPrice">Price: 0 ETH</p>
+            <form id="offerForm">
+                <label for="offerAmount">Make an Offer:</label>
+                <input type="text" id="offerAmount" name="offerAmount" placeholder="Enter your offer in ETH">
+                <button type="button" id="submitOfferBtn">Submit Offer</button>
+            </form>
+        </div>
+    </div>
+
+    <footer class="silk-road-footer">
+        <p>&copy; 2023 NFT Silk Road Marketplace. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Function to create Purchase button with redirect to external URL
+        function createPurchaseButton() {
+            const buttons = document.querySelectorAll('.purchase-btn');
+            buttons.forEach(button => {
+                button.addEventListener('click', () => {
+                    window.open('https://magiceden.io/ordinals/marketplace/omb', '_blank');
+                });
+            });
+        }
+
+        // Function to create View Details button with modal popup
+        function createViewDetailsButton() {
+            const buttons = document.querySelectorAll('.view-details-btn');
+            buttons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const modal = document.getElementById('detailsModal');
+                    const modalImage = document.getElementById('modalImage');
+                    const modalDescription = document.getElementById('modalDescription');
+                    const modalPrice = document.getElementById('modalPrice');
+
+                    // Replace with actual details based on NFT data
+                    const nftId = button.parentNode.dataset.id;
+                    const nftImage = `https://img-cdn.magiceden.dev/rs:fill:400:0:0/plain/https://bafybeidb7ltjitqivbcp22iktp5vmciee4dwzrjobwjnlzt5dkgyepj5ne.ipfs.nftstorage.link/`;
+                    const nftDescription = `Description of the NFT ${nftId}`;
+                    const nftPrice = `Price: 0.${nftId} BTC`;
+
+                    modalImage.src = nftImage;
+                    modalDescription.textContent = nftDescription;
+                    modalPrice.textContent = nftPrice;
+
+                    modal.style.display = 'block';
+
+                    // Close modal when the close button is clicked
+                    const closeModalBtn = document.querySelector('.close');
+                    closeModalBtn.addEventListener('click', () => {
+                        modal.style.display = 'none';
+                    });
+                });
+            });
+        }
+
+        // Function to handle offer submission
+        function handleOfferSubmission() {
+            const submitOfferBtn = document.getElementById('submitOfferBtn');
+            submitOfferBtn.addEventListener('click', () => {
+                const offerAmount = document.getElementById('offerAmount').value;
+                // Handle the offer submission logic here (e.g., send to backend, update UI, etc.)
+                alert(`Offer submitted: ${offerAmount} BTC`);
+            });
+        }
+
+        // Call the functions when the page loads
+        window.onload = () => {
+            createPurchaseButton();
+            createViewDetailsButton();
+            handleOfferSubmission();
+        };
+    </script>
+
+    <script src="scripts.js"></script>
+</body>
+
+</html>
+<!-- partial -->
+  <script  src="./script.js"></script>
+
+</body>
+</html>
